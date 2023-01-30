@@ -1,0 +1,34 @@
+body{
+background-image: url(BG.jpeg);
+
+}
+
+
+
+.light{
+    background-color: rgb(171,192,110) ;
+    
+}
+.light:hover{
+    background-color:  rgb(250,247,191);
+}
+.dark{
+    background-color: rgb(124,164,87); 
+    
+}
+.dark:hover{
+    background-color: rgb(201,156,129); 
+
+}
+.square{
+
+    width: 100px;
+    height: 100px;
+}
+
+.column{
+    display: flex;
+}
+#piece{
+    width:90px;
+}
