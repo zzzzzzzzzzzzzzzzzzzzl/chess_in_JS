@@ -3,13 +3,12 @@
 import{
     board,pawn,rook,bishop,knight,queen,king
 }from './peices.js'
-
+var turn =false;
 var selected;
 function select(id){
-    console.log(id);
 
     var square=getsquare(id);
-    
+    console.log(turn);
 
     //if selected is none then select a square with a piece on it
         if (square[1]!='n'){
@@ -25,7 +24,11 @@ function select(id){
             var selected_div=get_div(selected[0]);
             var square_div=get_div(square[0]);
             square_div.appendChild(selected_div.firstElementChild);
+            
+            turn=!turn;
         }
+
+        //we just need to define movement for each peice.
 
 
 
@@ -34,6 +37,8 @@ function select(id){
 
 
 }
+
+
 
 //takes the div id  from the html and converts it into int so that so get the correct index for the board array.
 function get_div(arr){
