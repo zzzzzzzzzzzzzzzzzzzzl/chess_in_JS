@@ -6,32 +6,41 @@ import{
 
 var selected;
 function select(id){
-    console.log(selected);
-    if (selected){
-        //find a valid square to move to, if square is invalid deselect.
-        var move=getsquare(id);
-        if (selectif(move)==false){
-    console.log('valid');
-        }
-        else{
-            console.log('invalid');
-            var selected;
+    console.log(id);
+
+    var square=getsquare(id);
+    
+
+    //if selected is none then select a square with a piece on it
+        if (square[1]!='n'){
+            selected=square;
         };
 
+        //if a square with a piece on it is selected and the other input square has no piece on it// should these be functions? for better organisation?
+        if (selected && square[1]=='n' ){
+            square[1]=selected[1];
+            selected[1]='n';
 
-
-    }
-    else{
-    var t=document.getElementById(id).firstElementChild
-    var valid=selectif(getsquare(id));
-    if(valid){
-        selected=id;
+            //selected div should have a child, square div should not. child selected child onto square div and delete child from selected.
+            var selected_div=get_div(selected[0]);
+            var square_div=get_div(square[0]);
+            square_div.appendChild(selected_div.firstElementChild);
         }
-    console.log(selected);
-    };
+
+
+
+    
+
+
+
 }
 
 //takes the div id  from the html and converts it into int so that so get the correct index for the board array.
+function get_div(arr){
+    var id= `${arr[0]}.${arr[1]}`;
+    return document.getElementById(id);
+    
+}
 function getsquare(id){
     var x=parseInt(id[0]);
     var y=parseInt(id[2]);
