@@ -5,6 +5,8 @@ background-image: url(BG.jpeg);
 
 
 
+
+
 .light{
     background-color: rgb(171,192,110) ;
     
@@ -12,13 +14,21 @@ background-image: url(BG.jpeg);
 .light:hover{
     background-color:  rgb(250,247,191);
 }
+.valid.light{
+    background-color:  rgb(200, 231, 108) ;
+}
 .dark{
     background-color: rgb(124,164,87); 
     
 }
 .dark:hover{
-    background-color: rgb(201,156,129); 
-
+    background-color: rgb(149, 206, 96); 
+}
+.valid.dark{
+    background-color:  rgb(178, 236, 122); 
+}
+.selected{
+    background-color: rgb(237, 243, 155); 
 }
 .square{
 

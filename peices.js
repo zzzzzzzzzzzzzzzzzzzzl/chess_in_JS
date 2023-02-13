@@ -1,21 +1,98 @@
 
+function bool_colour(c){
+    var x;
+    if (c=='w'){
+        var x=true;
+    };
+    if (c=='b'){
+        var x=false;
+    }
+    return x;
+}
 
-
-
+console.log('test peices.js');
 
 export class pawn{
     constructor(c,s){
         this.c=c;
+        this.c_bool=bool_colour(c);
         this.s=s;
+        this.times_moved=0
+
+        
         var id=`${s[0]}.${s[1]}`;
         this.div=document.getElementById(id);
         var spriteurl=`./sprite/${this.c}pawn.png`;
         var sprite= document.createElement('img');
-        
         sprite.src=spriteurl;
         this.div.appendChild(sprite);
-
         sprite.id='piece';
+
+    }
+    piece_moved(){
+        this.times_moved++
+    }
+    get_valid_squares(selected,board){
+        // ok for pawn kind of tricky we need to check square in front#only while the square is empty
+        //and the two adjasent squares of that square.#though only while taking
+        //if the pawn has not moved +2 forward is a valid move
+        // if an oposing pawn has moved forward 2 squares last turn 
+        //then the square behind that is valid and will take that piece.
+        
+        if (selected[1].c_bool){var valid=this.search_white(selected,board)}
+        else{var valid=this.search_black(piece,board)}
+        return valid
+    }
+
+    search_white(selected,board){
+        const pos=selected[0]
+        board=board.board
+        var pawn_double=[[0,2]]
+        var check=[[0,1]]
+        var take=[[-1,1],[1,1],[-1,2],[1,2]]
+        var valid=[]
+        check.map(i=>{
+            try{
+                var x=[i[0]+pos[0],i[1]+pos[1]]
+                if (board[x[0]][x[1]][1]=='n'){
+                    valid.push(board[x[0]][x[1]])
+                }
+            }
+            catch{}    
+        })
+        take.map(i=>{
+            try{
+                var x=[i[0]+pos[0],i[1]+pos[1]]
+                if (board[x[0]][x[1]][1].c_bool==false){
+                    valid.push(board[x[0]][x[1]])
+                }
+            }
+            catch{}   
+        })
+        pawn_double.map(i=>{
+            try{
+                var x=[i[0]+pos[0],i[1]+pos[1]]
+                if (board[x[0]][x[1]][1]=='n' && this.times_moved==0){
+                    valid.push(board[x[0]][x[1]])
+                }
+            }
+            catch{}    
+        })
+        return valid
+    }
+    highlight(arr){
+        for(let i in arr){
+            
+            const pos =arr[i][0]
+            console.log(  document.getElementById(`${pos[0]}.${pos[1]}`))
+            document.getElementById(`${pos[0]}.${pos[1]}`).style.backgroundColor='red'
+        }
+
+    }
+    
+    search_black(piece,board){
+        var valid=[]
+        return valid
 
     }
 }
@@ -23,6 +100,7 @@ export class pawn{
 export class rook{
     constructor(c,s){
         this.c=c;
+        this.c_bool=bool_colour(c);
         this.s=s;
         var id=`${s[0]}.${s[1]}`;
         this.div=document.getElementById(id);
@@ -33,12 +111,18 @@ export class rook{
 
         sprite.id='piece';
 
+        this.times_moved=0
+
+    }
+    piece_moved(){
+        this.times_moved++
     }
 }
 
 export class bishop{
     constructor(c,s){
         this.c=c;
+        this.c_bool=bool_colour(c);
         this.s=s;
         var id=`${s[0]}.${s[1]}`;
         this.div=document.getElementById(id);
@@ -48,12 +132,18 @@ export class bishop{
         this.div.appendChild(sprite);
 
         sprite.id='piece';
+
+        this.times_moved=0
+    }
+    piece_moved(){
+        this.times_moved++
     }
 }
 
 export class knight{
     constructor(c,s){
         this.c=c;
+        this.c_bool=bool_colour(c);
         this.s=s;
         var id=`${s[0]}.${s[1]}`;
         this.div=document.getElementById(id);
@@ -63,12 +153,18 @@ export class knight{
         this.div.appendChild(sprite);
 
         sprite.id='piece';
+
+        this.times_moved=0
+    }
+    piece_moved(){
+        this.times_moved++
     }
 }
 
 export class queen{
     constructor(c,s){
         this.c=c;
+        this.c_bool=bool_colour(c);
         this.s=s;
         var id=`${s[0]}.${s[1]}`;
         this.div=document.getElementById(id);
@@ -78,12 +174,18 @@ export class queen{
         this.div.appendChild(sprite);
 
         sprite.id='piece';
+
+        this.times_moved=0
+    }
+    piece_moved(){
+        this.times_moved++
     }
 }
 
 export class king{
     constructor(c,s){
         this.c=c;
+        this.c_bool=bool_colour(c);
         this.s=s;
         var id=`${s[0]}.${s[1]}`;
         this.div=document.getElementById(id);
@@ -93,6 +195,11 @@ export class king{
         this.div.appendChild(sprite);
 
         sprite.id='piece';
+
+        this.times_moved=0
+    }
+    piece_moved(){
+        this.times_moved++
     }
 }
 
