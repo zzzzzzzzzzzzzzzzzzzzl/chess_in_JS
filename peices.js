@@ -74,10 +74,8 @@ export class pawn{
         else if(!this.colour&&square.square[0]==0){this.promote()}
     }
     promote(square){
-        console.log(square)
         var x=square.div.firstChild
-        console.log(x)
-        x.remove()
+     //   x.remove()
         this.create_box_on_mouse_pos()
     }
     select_promotion_piece(sprite_url,piece_class,parent){

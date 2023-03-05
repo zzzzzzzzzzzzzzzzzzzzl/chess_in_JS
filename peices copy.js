@@ -126,11 +126,8 @@ export class pawn{
         function promotion_box_onclick(piece_class,square){
             
             toggle_board_onclick_events()
-            console.log('right here baby')
             parent.parentNode.removeChild(parent)
             selected_piece=piece_class
-            console.log(square)
-
             var pos=square[0]
             var piece=square[1]
             var div=$(`${pos[0]}.${pos[1]}`)
