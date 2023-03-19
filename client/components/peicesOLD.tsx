@@ -159,8 +159,9 @@ export class king{
     }
 }
 
-export class board{
+export class Board{
     constructor(){
+        console.log("new board")
 //================================================SET UP
     this.move_history
     this.turn=true
@@ -197,9 +198,12 @@ export class board{
     }
     place_board_piece(x,y,piece,bool){
         this.board[x][y].piece=this.create_piece(piece,bool)
+        console.log(this.board[x][y].piece.sprite)
         this.board[x][y].div.appendChild(this.board[x][y].piece.sprite)
     }
-
+    test(){
+        console.log('test')
+    }
     setboard(){
 
         for (let i in this.board[1]){
@@ -308,6 +312,8 @@ export class board{
         this.board[arr[0]][arr[1]].piece=null
     }  
 }
+
+
 
 
 
