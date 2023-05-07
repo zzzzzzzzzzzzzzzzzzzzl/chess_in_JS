@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import React, { useState } from 'react';
 import { appendToDo } from '../slices/todo';
 import Piece from './piece';
-import { game } from './PieceObjects/game';
+import { game } from './PieceObjects/game'
 
 let arr=[
   [[0,0],'wrook'],
@@ -31,17 +31,18 @@ let arr=[
   [[7,7],'brook'],
 
 ]
+const chess=new game()
 function Board() {
   function handleClick(event) {
+    chess.onClick(event.target.id)
     const idValue = event.target.id;
     console.log(idValue);
   }
-const chess=new game()
   return (
     <React.Fragment>
       {new Array(8).fill().map((_, i) => { 
         return (
-          <div className='column'>
+          <div className='column' key={i}>
             {new Array(8).fill().map((_, j) => {
               const sharp=arr.filter((k)=>{
                 if(JSON.stringify(k[0]) === JSON.stringify([j,i])){
@@ -58,9 +59,14 @@ const chess=new game()
                 squareColour='light'
               }
               return (
-                <div id={pieceId} className={`${squareColour} square`} onClick={handleClick} >
-                  {pieceId}
-                  <Piece piece={piece} colour='j' key={Math.random()}/>
+                <div id={pieceId} className={`${squareColour} square`} onClick={handleClick} key={`${i}.${j}`}>
+                  <div style={{ pointerEvents: 'none' }}>
+                    {piece &&
+                      <div id ={piece} >
+                        <img src={`./sprite/${piece}.png`} alt="" />
+                      </div>
+                      }
+                  </div>
                 </div>
               )
             })}

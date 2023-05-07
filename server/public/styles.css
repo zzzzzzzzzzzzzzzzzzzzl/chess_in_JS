@@ -1,0 +1,65 @@
+body{
+  background-image: url(BG.jpeg);
+  position: relative;
+  caret-color: transparent;
+  }
+  
+  .light{
+      background-color: rgb(171,192,110) ;
+      
+  }
+  .light:hover{
+      background-color:  rgb(250,247,191);
+  }
+  .valid.light{
+      background-color:  rgb(200, 231, 108) ;
+  }
+  .dark{
+      background-color: rgb(124,164,87); 
+      
+  }
+  .dark:hover{
+      background-color: rgb(149, 206, 96); 
+  }
+  .valid.dark{
+      background-color:  rgb(170, 223, 101) ;
+  }
+  .selected{
+      background-color: rgb(237, 243, 155); 
+  }
+  .square{
+      width: 64px;
+      height: 64px;
+  }
+  
+  .column{
+      display: flex;
+  }
+  #piece{
+  
+  }
+  
+  
+  .promotion_box{
+      display: inline-block;
+      background-color: rgb(202, 195, 148);
+      border-radius: 25px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      position: absolute;
+    transform: translate(-50%, -50%);
+      opacity: 1;
+      min-width: 400px;
+      max-height: 100px;
+  }
+  .promotion_box_child{
+      background-color: none;
+      border-radius: 25px;
+      display: inline-block;
+      opacity: 1;
+      
+  }
+  
+  .promotion_box_child:hover{
+      background-color: rgb(245, 235, 185);
+      
+  }
