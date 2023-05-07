@@ -27,16 +27,15 @@ position: relative;
     background-color: rgb(237, 243, 155); 
 }
 .square{
-
-    width: 100px;
-    height: 100px;
+    width: 64px;
+    height: 64px;
 }
 
 .column{
     display: flex;
 }
 #piece{
-    width:90px;
+
 }
 
 
