@@ -36,7 +36,6 @@ function Board() {
   function handleClick(event) {
     chess.onClick(event.target.id)
     const idValue = event.target.id;
-    console.log(idValue);
   }
   return (
     <React.Fragment>
@@ -61,6 +60,7 @@ function Board() {
               return (
                 <div id={pieceId} className={`${squareColour} square`} onClick={handleClick} key={`${i}.${j}`}>
                   <div style={{ pointerEvents: 'none' }}>
+                    
                     {piece &&
                       <div id ={piece} >
                         <img src={`./sprite/${piece}.png`} alt="" />
